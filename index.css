@@ -1,0 +1,98 @@
+.item {
+    color: white;
+    font-size: 4em;
+    box-sizing: border-box;
+    background-color: #4A90E2;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#box {
+    box-sizing: border-box;
+    display: flex;
+    margin: auto;
+    width: 404px;
+    height: 404px;
+    font-family: 'Ubuntu', sans-serif;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.noitem {
+    order: 16;
+    box-sizing: border-box;
+    height: 100px;
+    width: 100px;
+    background-color: #EDEDED;
+}
+
+#btn-group {
+    font-family: 'Ubuntu', sans-serif;
+    width: 400px;
+    margin: auto;
+    margin-top: 100px;
+    text-align: center;
+}
+
+#random{
+    height: 40px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.5em;
+    background-color: #50E3C2;
+    border-radius: 3px;
+    color: black;
+    border: none;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+#solve {
+    height: 50px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.5em;
+    border-radius: 3px;
+    background-color: white;
+    color: #50E3C2;
+    border: 2px solid #50E3C2;
+    width: 100%;
+}
+
+#header {
+    font-size: 1.5em;
+    font-family: 'Ubuntu', sans-serif;
+    color: #B3B3B3;
+    margin: auto;
+    width: 500px;
+    margin-bottom: 50px;
+}
+p {
+    margin: 0;
+}
+
+#left{
+    display: inline-block;
+}
+
+#right{
+    color: #B3B3B3;
+    display: inline-block;
+    float: right;
+}
+#timeCount {
+    color: gray;
+    font-size: 1.3em;
+}
+
+#stepsCount {
+    color: gray;
+    font-size: 1.3em;
+}
+
