@@ -35,23 +35,21 @@ $( "#box" ).click(function(e) {
     let clicked= parseInt(e.target.style.order,10);
     let empty = parseInt($('#16').css('order'),10);
     console.log(e.target.style)
-    if(clickedId === '16'){
-
-    } else {
-       if(getSibling(clicked, empty)){
-           $(e.target).animate({order:  $('#16').css('order')});
-           $('#16').animate({order: $(e.target).css('order')}, function (){
-               steps ++;
-               $("#stepsCount").html(steps.toString());
-               for (var i = 1; i <=16; i++) {
-                   currentPosition[i-1] = $(`#${i}`).css( 'order' );
-               }
-               console.log(currentPosition);
-               if(currentPosition.length===winPosition1.length && currentPosition.every((v,i)=> v === winPosition1[i])) {
-                   console.log('win');
-               }
-           });
-       }
+    if(clickedId !== '16') {
+        if (getSibling(clicked, empty)) {
+            $(e.target).animate({order: $('#16').css('order')});
+            $('#16').animate({order: $(e.target).css('order')}, function () {
+                steps++;
+                $("#stepsCount").html(steps.toString());
+                for (var i = 1; i <= 16; i++) {
+                    currentPosition[i - 1] = $(`#${i}`).css('order');
+                }
+                console.log(currentPosition);
+                if (currentPosition.length === winPosition1.length && currentPosition.every((v, i) => v === winPosition1[i])) {
+                    console.log('win');
+                }
+            });
+        }
     }
 });
 
