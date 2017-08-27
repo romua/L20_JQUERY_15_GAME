@@ -4,17 +4,20 @@ let newArr = [];
 let steps = 0;
 let seconds = 0;
 let currentPosition = [];
-var stopwatch = null;
-$('#1').animate({order: 1});
-for (var i = -1; i <=16; i++) {
-
-        $(`#${i}`).css('order', winPosition1[i-1]);
+let stopwatch = setInterval(function () {
+    seconds++;
+    console.log(seconds);
+    $("#timeCount").html(`${seconds.toString()} seconds`);
+}, 1000);
+$("#stepsCount").html(0);
+for (let i = 1; i <=16; i++) {
+        $(`#item${i}`).css('order', winPosition1[i-1]);
 }
 function shuffleArray(array) {
     newArr = array;
-    for (var i = newArr.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = newArr[i];
+    for (let i = newArr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = newArr[i];
         newArr[i] = newArr[j];
         newArr[j] = temp;
     }
@@ -22,31 +25,33 @@ function shuffleArray(array) {
 }
 function getSibling(clickedOrder,emptyOrder) {
     console.log(clickedOrder, emptyOrder);
-    if(clickedOrder-4 === emptyOrder || clickedOrder+4 === emptyOrder || clickedOrder-1===emptyOrder || clickedOrder+1 === emptyOrder){
-       return true;
-    }else {
-        return false;
-    }
+    return clickedOrder - 4 === emptyOrder || clickedOrder + 4 === emptyOrder ||
+        clickedOrder - 1 === emptyOrder || clickedOrder + 1 === emptyOrder;
 
 }
 
 $( "#box" ).click(function(e) {
     let clickedId = e.target.id;
     let clicked= parseInt(e.target.style.order,10);
-    let empty = parseInt($('#16').css('order'),10);
-    console.log(e.target.style)
-    if(clickedId !== '16') {
+    let empty = parseInt($('#item16').css('order'),10);
+    console.log(clickedId);
+    if(clickedId !== 'item16') {
         if (getSibling(clicked, empty)) {
-            $(e.target).animate({order: $('#16').css('order')});
-            $('#16').animate({order: $(e.target).css('order')}, function () {
+            $(e.target).animate({order: $('#item16').css('order')});
+            $('#item16').animate({order: $(e.target).css('order')}, function () {
                 steps++;
                 $("#stepsCount").html(steps.toString());
-                for (var i = 1; i <= 16; i++) {
-                    currentPosition[i - 1] = $(`#${i}`).css('order');
+                for (let i = 1; i <= 16; i++) {
+                    currentPosition[i - 1] = $(`#item${i}`).css('order');
                 }
                 console.log(currentPosition);
                 if (currentPosition.length === winPosition1.length && currentPosition.every((v, i) => v === winPosition1[i])) {
-                    console.log('win');
+                    alert('Win!!!!!!1 Grats!!!!!111');
+                    clearInterval(stopwatch);
+                    seconds = 0;
+                    steps = 0;
+                    $("#stepsCount").html(0);
+                    $("#timeCount").html(`0 seconds`)
                 }
             });
         }
@@ -54,25 +59,27 @@ $( "#box" ).click(function(e) {
 });
 
 $(" #random ").click(e=>{
+    $("#timeCount").html(`0 seconds`);
     clearInterval(stopwatch);
      stopwatch = setInterval(function () {
-            seconds++
+            seconds++;
             console.log(seconds);
             $("#timeCount").html(`${seconds.toString()} seconds`);
     }, 1000);
-     seconds = 0;
-    steps = 0;
+    $("#stepsCount").html(0);
     shuffleArray(winPosition);
     for (let i = 1; i <=16; i++) {
-        $(`#${i}`).animate({order: newArr[i-1]});
+        $(`#item${i}`).animate({order: newArr[i-1]});
     }
 });
 $(" #solve ").click(e=>{
+    for (let i = 1; i <=16; i++) {
+        $(`#item${i}`).animate({order: winPosition1[i-1]});
+    }
+    clearInterval(stopwatch);
     seconds = 0;
     steps = 0;
-    clearInterval(stopwatch);
-    for (var i = 1; i <=16; i++) {
-        $('#'+i).animate({order: winPosition1[i-1]});
-    }
+    $("#stepsCount").html(0);
+    $("#timeCount").html(`0 seconds`)
 });
 
