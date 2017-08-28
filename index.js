@@ -46,7 +46,7 @@ $( "#box" ).click(function(e) {
                 }
                 console.log(currentPosition);
                 if (currentPosition.length === winPosition1.length && currentPosition.every((v, i) => v === winPosition1[i])) {
-                    alert('Win!!!!!!1 Grats!!!!!111');
+                    alert(`Grats! You win in ${seconds} seconds within ${steps} steps`);
                     clearInterval(stopwatch);
                     seconds = 0;
                     steps = 0;

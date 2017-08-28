@@ -29,6 +29,8 @@
 .noitem {
     order: 16;
     box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 5px;
     height: 100px;
     width: 100px;
     background-color: #EDEDED;
@@ -94,5 +96,10 @@ p {
 #stepsCount {
     color: gray;
     font-size: 1.3em;
+}
+
+.item:active {
+    border: 1px solid darkblue;
+    box-shadow: 4px 4px 31px 1px rgba(0,0,0,0.75);
 }
 
