@@ -59,6 +59,9 @@ $( "#box" ).click(function(e) {
 });
 
 $(" #random ").click(e=>{
+    clearInterval(stopwatch);
+    seconds = 0;
+    steps = 0;
     $("#timeCount").html(`0 seconds`);
     clearInterval(stopwatch);
      stopwatch = setInterval(function () {
